@@ -4,10 +4,12 @@ const container = require('./../Container');
 
 productAPI.get('/', (req, res) => {
     fetchAllProducts()
-        .then(all => res.json({
-            message: 'Array con todos los productos',
-            data: all
-        }))
+        .then(data => {
+            res.render('pages/listado', {
+                message: 'Array con todos los productos',
+                data: data,
+            });
+        })
         .catch(e => console.error(e));
 });
 

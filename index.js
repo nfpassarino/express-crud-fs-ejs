@@ -4,11 +4,12 @@ const productsRoute = require('./routes/products');
 const app = express();
 const PORT = 8080;
 
+app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-    res.status(200).sendFile('index.html');
+    res.render('pages/index');
 });
 
 app.use('/api/productos', productsRoute);
